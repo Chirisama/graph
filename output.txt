@@ -1,0 +1,191 @@
+Sat Apr 27 23:10:18 PDT 2024
+Linux csslab13 4.18.0-513.18.1.el8_9.x86_64 #1 SMP Wed Feb 21 21:34:36 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+uid=1261876(siyuanc) gid=2121261876(siyuanc) groups=2121261876(siyuanc),605559(lab-access)
+=====================================================
+1. Compiles without warnings with -Wall -Wextra flags
+=====================================================
+=====================================================
+2. Runs and produces correct output
+=====================================================
+testGraph0DFS
+testGraph0BFS
+testGraph0Dijkstra
+testGraph0NotDirected
+testGraph1
+Done!
+=====================================================
+3. clang-tidy warnings are fixed
+=====================================================
+22264 warnings generated.
+37326 warnings generated.
+48629 warnings generated.
+Suppressed 48646 warnings (48629 in non-user code, 17 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+=====================================================
+4. clang-format does not find any formatting issues
+=====================================================
+Running clang-format on ./graph.cpp
+Running clang-format on ./graphtest.cpp
+Running clang-format on ./main.cpp
+=====================================================
+5. No memory leaks using g++
+=====================================================
+=====================================================
+6. No memory leaks using valgrind, look for "definitely lost" 
+=====================================================
+==1477081== Memcheck, a memory error detector
+==1477081== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1477081== Using Valgrind-3.21.0 and LibVEX; rerun with -h for copyright info
+==1477081== Command: ./a.out
+==1477081== Parent PID: 1476978
+==1477081== 
+==1477081== 
+==1477081== HEAP SUMMARY:
+==1477081==     in use at exit: 0 bytes in 0 blocks
+==1477081==   total heap usage: 381 allocs, 381 frees, 152,513 bytes allocated
+==1477081== 
+==1477081== All heap blocks were freed -- no leaks are possible
+==1477081== 
+==1477081== For lists of detected and suppressed errors, rerun with: -s
+==1477081== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+=====================================================
+7. Tests have full code coverage
+=====================================================
+File '/home/NETID/siyuanc/graph/graph.cpp':
+Name                                                                                                                                                                                                                                                                                                       Regions    Miss   Cover     Lines    Miss   Cover  Branches    Miss   Cover
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Graph::Graph(bool)                                                                                                                                                                                                                                                                                               1       0 100.00%         3       0 100.00%         0       0   0.00%
+Graph::~Graph()                                                                                                                                                                                                                                                                                                  1       0 100.00%         1       0 100.00%         0       0   0.00%
+Graph::verticesSize() const                                                                                                                                                                                                                                                                                      4       0 100.00%         7       0 100.00%         2       0 100.00%
+Graph::edgesSize() const                                                                                                                                                                                                                                                                                         5       0 100.00%        10       0 100.00%         4       0 100.00%
+Graph::vertexDegree(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) const                                                                                                                                                                                                 7       0 100.00%        11       0 100.00%         4       0 100.00%
+Graph::add(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&)                                                                                                                                                                                                                4       0 100.00%         8       0 100.00%         2       0 100.00%
+Graph::contains(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) const                                                                                                                                                                                                     1       0 100.00%         3       0 100.00%         0       0   0.00%
+Graph::getEdgesAsString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) const                                                                                                                                                                                            10       0 100.00%        23       0 100.00%         8       1  87.50%
+Graph::connect(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, int)                                                                                                               25       1  96.00%        29       2  93.10%        16       1  93.75%
+Graph::disconnect(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&)                                                                                                                 19       7  63.16%        21       9  57.14%        16       8  50.00%
+Graph::dfs(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, void (*)(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&))                                                                                                              20       0 100.00%        38       0 100.00%        16       0 100.00%
+Graph::bfs(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, void (*)(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&))                                                                                                              10       0 100.00%        25       0 100.00%         8       0 100.00%
+Graph::dijkstra(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) const                                                                                                                                                                                                    39       0 100.00%        55       0 100.00%        36       5  86.11%
+Graph::mstPrim(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, void (*)(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, int)) const        16       0 100.00%        38       0 100.00%        18       0 100.00%
+Graph::readFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&)                                                                                                                                                                                                           7       1  85.71%        18       3  83.33%         4       1  75.00%
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                                                                                                                                                                                                                          169       9  94.67%       290      14  95.17%       134      16  88.06%
+
+File '/home/NETID/siyuanc/graph/graphtest.cpp':
+Name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Regions    Miss   Cover     Lines    Miss   Cover  Branches    Miss   Cover
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+vertexPrinter(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         1       0 100.00%         1       0 100.00%         0       0   0.00%
+edgePrinter(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, int)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               1       0 100.00%         3       0 100.00%         0       0   0.00%
+testGraphBasic()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             1       0 100.00%        28      22  21.43%         0       0   0.00%
+testGraph0DFS()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              4       1  75.00%        24      11  54.17%         2       1  50.00%
+testGraph0BFS()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              4       1  75.00%        19       5  73.68%         2       1  50.00%
+testGraph0Dijkstra()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         4       1  75.00%        18       7  61.11%         2       1  50.00%
+testGraph0NotDirected()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      4       1  75.00%        47      19  59.57%         2       1  50.00%
+testGraph1()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 4       1  75.00%        28       7  75.00%         2       1  50.00%
+testAll()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    1       0 100.00%         8       0 100.00%         0       0   0.00%
+graphtest.cpp:std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> map2string<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, int>(std::map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, int, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const, int>>> const&)                                                                                                                                                                                                                                          2       0 100.00%         7       0 100.00%         2       0 100.00%
+graphtest.cpp:std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> map2string<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>(std::map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>> const&)         2       0 100.00%         7       0 100.00%         2       0 100.00%
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       28       5  82.14%       190      71  62.63%        14       5  64.29%
+
+File '/home/NETID/siyuanc/graph/main.cpp':
+Name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Regions    Miss   Cover     Lines    Miss   Cover  Branches    Miss   Cover
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+main                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         1       0 100.00%         5       0 100.00%         0       0   0.00%
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        1       0 100.00%         5       0 100.00%         0       0   0.00%
+=====================================================
+The lines below were never executed
+=====================================================
+  161|      0|        return false;
+  162|      0|      }
+  187|      0|    return false;
+  188|      0|  }
+  192|      0|    auto &edges = graph[to];
+  193|      0|    for (auto node = edges.begin(); node != edges.end(); node++) {
+  194|      0|      if (node->first == from) {
+  195|      0|        edges.erase(node);
+  196|      0|      }
+  197|      0|    }
+  198|      0|  }
+  421|      0|    cerr << "Failed to open " << filename << endl;
+  422|      0|    return false;
+  423|      0|  }
+   41|      0|  assert(g.add("b") && "add vertex b");
+   42|      0|  assert(g.add("c") && "add vertex c");
+   43|      0|  assert(g.add("d") && "add vertex d");
+   44|      0|  assert(g.add("e") && "add vertex e");
+   45|      0|  assert(!g.add("b") && "b added twice");
+   46|      0|  assert(g.connect("a", "b", 10) && "connect a b");
+   47|      0|  assert(!g.connect("a", "b", 50) && "duplicate connect a b");
+   48|      0|  assert(!g.connect("a", "a", 1) && "connect a to itself");
+   49|      0|  g.connect("a", "d", 40);
+   52|      0|  assert((g.edgesSize() == 3) && "graph number of edges");
+   53|      0|  assert((g.vertexDegree("a") == 3) && "vertex number of edges");
+   54|      0|  assert((g.vertexDegree("c") == 0) && "no outgoing edges c");
+   55|      0|  assert((g.vertexDegree("xxx") == -1) && "no edges for xxx");
+   56|      0|  assert(!g.contains("xxx") && "xxx not in graph");
+   57|      0|  assert(g.contains("a") && "a in graph");
+   60|      0|  assert(g.getEdgesAsString("a") == "b(10),c(20),d(40)");
+   62|      0|  assert(!g.disconnect("a", "e") && "disconnecting non-existent vertex");
+   63|      0|  assert((g.edgesSize() == 3) && "disconnected nonexisting");
+   64|      0|  assert(g.disconnect("a", "c") && "a-c disconnect");
+   65|      0|  assert((g.edgesSize() == 2) && "number of edges after disconnect");
+   66|      0|  assert((g.vertexDegree("a") == 2) && "a has 2 edges");
+   67|      0|  assert(g.getEdgesAsString("a") == "b(10),d(40)" && "removing middle edge");
+   74|      0|    return;
+   75|      0|  }
+   77|      0|  assert(g.contains("B") && "b in graph");
+   78|      0|  assert(g.contains("C") && "c in graph");
+   79|      0|  assert(g.getEdgesAsString("A") == "B(1),C(8)");
+   80|      0|  assert(g.getEdgesAsString("B") == "C(3)");
+   81|      0|  assert(g.getEdgesAsString("C").empty());
+   83|      0|  g.dfs("A", vertexPrinter);
+   86|      0|  globalSS.str("");
+   90|      0|  globalSS.str("");
+   94|      0|  globalSS.str("");
+  103|      0|    return;
+  104|      0|  }
+  110|      0|  globalSS.str("");
+  114|      0|  globalSS.str("");
+  118|      0|  globalSS.str("");
+  127|      0|    return;
+  128|      0|  }
+  135|      0|  assert(map2string(previous) == "[B:A][C:B]" && "Dijkstra(A) previous");
+  137|      0|  tie(weights, previous) = g.dijkstra("B");
+  140|      0|  assert(map2string(previous) == "[C:B]" && "Dijkstra(B) previous");
+  142|      0|  tie(weights, previous) = g.dijkstra("X");
+  144|      0|  assert(map2string(previous).empty() && "Dijkstra(C) previous");
+  152|      0|    return;
+  153|      0|  }
+  159|      0|  globalSS.str("");
+  164|      0|  globalSS.str("");
+  168|      0|  globalSS.str("");
+  172|      0|  map<string, int> weights;
+  178|      0|  assert(map2string(previous) == "[B:A][C:B]" && "Dijkstra(A) previous");
+  180|      0|  tie(weights, previous) = g.dijkstra("B");
+  182|      0|  assert(map2string(previous) == "[A:B][C:B]" && "Dijkstra(B) previous");
+  184|      0|  tie(weights, previous) = g.dijkstra("X");
+  186|      0|  assert(map2string(previous).empty() && "Dijkstra(C) previous");
+  188|      0|  globalSS.str("");
+  191|      0|  assert(globalSS.str() == "[AB 1][BC 3]" && "mst A is [AB 1][BC 3]");
+  193|      0|  globalSS.str("");
+  196|      0|  assert(globalSS.str() == "[BA 1][BC 3]");
+  198|      0|  globalSS.str("");
+  201|      0|  assert(globalSS.str() == "[CB 3][BA 1]");
+  203|      0|  globalSS.str("");
+  206|      0|  assert(globalSS.str().empty() && "mst for vertex not found");
+  213|      0|    return;
+  214|      0|  }
+  219|      0|  globalSS.str("");
+  223|      0|  globalSS.str("");
+  227|      0|  globalSS.str("");
+  231|      0|  map<string, int> weights;
+  238|      0|  assert(map2string(previous) == "[B:A][C:B][D:C][E:D][F:E][G:H][H:A]" &&
+Sat Apr 27 23:10:38 PDT 2024
+=====================================================
+To create an output.txt file with all the output from this script
+Run the below command
+      ./create-output.sh > output.txt 2>&1 
+=====================================================
